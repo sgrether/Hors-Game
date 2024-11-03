@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://cf2w6wc648ycl"]
+
+[ext_resource type="Texture2D" uid="uid://bcrqegcbk0kea" path="res://Assets/lazer.png" id="1_c7lm4"]
+[ext_resource type="Script" path="res://Scenes/lazer.gd" id="1_pvlsb"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_21nqc"]
+height = 60.0
+
+[node name="Lazer" type="Area2D"]
+collision_layer = 8
+collision_mask = 2
+script = ExtResource("1_pvlsb")
+
+[node name="Lazer Sprite" type="Sprite2D" parent="."]
+texture = ExtResource("1_c7lm4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-2, 14)
+shape = SubResource("CapsuleShape2D_21nqc")

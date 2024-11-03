@@ -1,0 +1,83 @@
+[gd_scene load_steps=7 format=3 uid="uid://bl6dktf38i3x"]
+
+[ext_resource type="Texture2D" uid="uid://dbi4h5ckyanrs" path="res://Assets/Track.png" id="1_bo1ht"]
+[ext_resource type="Script" path="res://Scenes/level.gd" id="1_pspgb"]
+[ext_resource type="PackedScene" uid="uid://csw03c43y2rk" path="res://Scenes/player.tscn" id="2_i8qk4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_awh3a"]
+size = Vector2(29.5, 1290.91)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_umh2l"]
+size = Vector2(1934, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0f8qf"]
+size = Vector2(1940, 20)
+
+[node name="Level" type="Node2D"]
+script = ExtResource("1_pspgb")
+
+[node name="BG" type="Sprite2D" parent="."]
+position = Vector2(959.677, 531.501)
+scale = Vector2(1.66785, 1.62885)
+texture = ExtResource("1_bo1ht")
+
+[node name="Player" parent="." instance=ExtResource("2_i8qk4")]
+position = Vector2(973, 873)
+
+[node name="Boundary" type="Node2D" parent="."]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Boundary"]
+collision_layer = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Boundary/StaticBody2D"]
+position = Vector2(-2, 500.656)
+shape = SubResource("RectangleShape2D_awh3a")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="Boundary"]
+collision_layer = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Boundary/StaticBody2D2"]
+position = Vector2(957, 1077)
+shape = SubResource("RectangleShape2D_umh2l")
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="Boundary"]
+collision_layer = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Boundary/StaticBody2D3"]
+position = Vector2(956, -1)
+shape = SubResource("RectangleShape2D_0f8qf")
+
+[node name="StaticBody2D4" type="StaticBody2D" parent="Boundary"]
+collision_layer = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Boundary/StaticBody2D4"]
+position = Vector2(1920, 480.547)
+shape = SubResource("RectangleShape2D_awh3a")
+
+[node name="RatTimer" type="Timer" parent="."]
+autostart = true
+
+[node name="Rats" type="Node2D" parent="."]
+position = Vector2(-1, 0)
+
+[node name="Lazers" type="Node2D" parent="."]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Panel" type="Panel" parent="CanvasLayer"]
+offset_left = 1742.0
+offset_top = 42.0
+offset_right = 1848.0
+offset_bottom = 109.0
+
+[node name="KillCount" type="Label" parent="CanvasLayer"]
+offset_left = 1742.0
+offset_top = 42.0
+offset_right = 1848.0
+offset_bottom = 110.0
+theme_override_font_sizes/font_size = 32
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="timeout" from="RatTimer" to="." method="_on_timer_timeout"]

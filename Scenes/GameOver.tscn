@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://bdpcjv1c3xauw"]
+
+[ext_resource type="Texture2D" uid="uid://bcmbu02st8ef8" path="res://Assets/nuclear_explosion_text.jpg" id="1_v3mru"]
+
+[node name="NuclearExplosionText" type="Sprite2D"]
+position = Vector2(959.166, 593.125)
+scale = Vector2(0.946057, 0.946057)
+texture = ExtResource("1_v3mru")
